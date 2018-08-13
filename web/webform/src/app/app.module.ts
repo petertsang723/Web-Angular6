@@ -7,16 +7,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { FormComponent } from './form/form.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import { AformComponent } from './aform/aform.component';
+import { FormpageComponent } from './formpage/formpage.component';
+import {FormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import { SubmitformpageComponent } from './submitformpage/submitformpage.component';
+import { PageheaderComponent } from './pageheader/pageheader.component';
+import { MatIconModule } from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent,
-    AformComponent
+    FormpageComponent,
+    SubmitformpageComponent,
+    PageheaderComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +32,15 @@ import { AformComponent } from './aform/aform.component';
     MatSidenavModule,
     MatToolbarModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatCardModule,
+    MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [SubmitformpageComponent],
+  entryComponents: [SubmitformpageComponent]
 })
 export class AppModule { }

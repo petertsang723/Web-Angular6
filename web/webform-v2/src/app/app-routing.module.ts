@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormpageComponent } from './formpage/formpage.component';
 
-const routes: Routes = [
-  {
-    path: 'forms',
-    component: FormpageComponent
-  }
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

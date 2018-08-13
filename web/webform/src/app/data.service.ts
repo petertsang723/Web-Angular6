@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError, pipe } from 'rxjs';
+import { retry } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'Origin',
-    'Authorization': 'Origin'
+    'Content-Type':  'application/json',
+    'Authorization': 'Origin',
+    
   })
 };
 
@@ -21,17 +22,21 @@ export class DataService {
 
   data$ : Object;
 
+  constructor(private http: HttpClient) { }
 
-
-  constructor(private http: HttpClient) { 
-
+  getForms(){
+    return this.http.get('http://localhost:3000/forms').pipe(
+      retry(3), // retry a failed request up to 3 times
+    );;
   }
-
-  getForms() {
-    return this.http.get('http://localhost:3000/forms');
+  patchForms(id: String,form: Object) {
+    return this.http.patch('http://localhost:3000/forms/'+id,form,httpOptions).pipe(
+      retry(3), // retry a failed request up to 3 times
+    )
   }
   postForms(form: Object) {
-    console.log(form);
-    return this.http.post('http://localhost:3000/forms',form, httpOptions);
+    return this.http.post('http://localhost:3000/forms',form,httpOptions).pipe(
+      retry(3), // retry a failed request up to 3 times
+    );
   }
 }

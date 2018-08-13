@@ -1,0 +1,25 @@
+<app-pageheader></app-pageheader>
+<ul>
+  <li *ngFor="let form of forms$">
+    <mat-card class="matcard-card">
+        <mat-card-header class="matcard-header">
+          <img mat-card-avatar src = "{{form.iconurl}}" class="matcard-usericon" />
+          <mat-card-title>{{form.author}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <table class="matcard-table">
+            <tr>
+              <th>Title: </th><th><p>{{form.title}}</p></th>
+            </tr>
+            <tr>
+              <th>Postdate: </th><th><p>{{form.date1}}</p></th>
+            </tr>
+            <tr>
+              <th>Due date: </th><th><p>{{form.date2}}</p></th>
+            </tr>
+          </table>
+        </mat-card-content>
+    </mat-card>
+  </li>
+</ul>
+

@@ -1,0 +1,16 @@
+<ul>
+  <li *ngFor="let form of forms$">
+    <form class = "matinput-form">
+      <mat-form-field class="matinput-full-width">
+          <input matInput placeholder="ID" value="{{form._id}}"  disabled="disabled">
+      </mat-form-field>
+      <mat-form-field class="matinput-full-width">
+        <input matInput placeholder="Title" value="{{form.title}}" (keyup)="onKey($event,form,'title')">
+      </mat-form-field>
+      <mat-form-field class="matinput-full-width">
+        <input matInput placeholder="Author" value="{{form.author}}">
+      </mat-form-field>
+      <button mat-stroked-button value= "{{form._id}}" (click)="onPatch(this.form)">Submit</button>
+    </form>
+  </li>
+</ul>

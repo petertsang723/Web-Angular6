@@ -1,0 +1,18 @@
+<mat-dialog-content >
+    <form class = "matinput-form">
+        <mat-form-field class="matinput-full-width">
+            <input matInput placeholder="Username" value="ptsang" disabled="disabled">
+        </mat-form-field>
+        <mat-form-field class="matinput-full-width">
+            <input matInput placeholder="Title" (keyup)="onKey()">
+        </mat-form-field>
+        <mat-form-field class="matinput-full-width">
+            <input matInput placeholder="Author">
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button type="submit" [mat-dialog-close]="true" cdkFocusInitial>Submit</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
