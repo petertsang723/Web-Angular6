@@ -1,18 +1,26 @@
 .maticon {
-    padding: 0 14px;
-  }
-  
-  .spacer {
-    flex: 1 1 auto;
-  }
+  padding: 0 14px;
+}
 
-  .matinput-form {
+.spacer {
+  flex: 1 1 auto;
+}
+
+
+
+.matinput-full-width {
+  width: 100%;
+}
+
+.matinput-form {
+  mat-form-field {
     min-width: 150px;
-    max-width: 500px;
+    //max-width: 1000px;
     width: 100%;
     padding: 10px;
   }
-  
-  .matinput-full-width {
-    width: 100%;
-  }
+}
+
+mat-dialog-content {
+  max-height: 80%;
+}

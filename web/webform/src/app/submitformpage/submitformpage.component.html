@@ -1,18 +1,42 @@
 <mat-dialog-content >
-    <form class = "matinput-form">
-        <mat-form-field class="matinput-full-width">
-            <input matInput placeholder="Username" value="ptsang" disabled="disabled">
+    <form class = "matinput-form" #Form="ngForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input #username matInput placeholder="Username" value="ptsang" disabled="disabled" class="form-control">
         </mat-form-field>
-        <mat-form-field class="matinput-full-width">
-            <input matInput placeholder="Title" (keyup)="onKey()">
+        <mat-form-field>
+            <input matInput placeholder="Title" #title="ngModel" 
+            class="form-control" name="title" [(ngModel)] = "form$.title" required>
         </mat-form-field>
-        <mat-form-field class="matinput-full-width">
-            <input matInput placeholder="Author">
+        <mat-form-field>
+            <input matInput placeholder="Author" #author="ngModel"
+            class="form-control" name="author" [(ngModel)] = "form$.author" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1" placeholder="Create Date" #date1="ngModel"
+            class="form-control" name="date1" [(ngModel)] = "form$.date1" (ngModelChange) = "form$.date1=$event" required >
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker2" placeholder="Due Date" 
+            class="form-control" name="date2" [(ngModel)] = "form$.date2">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Content" [(ngModel)]="form$.content" #content="ngModel"
+            class="form-control" name="content" [(ngModel)] = "form$.content"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker3" placeholder="Modified Date" 
+            class="form-control" name="posttime" [(ngModel)] = "form$.posttime" disabled>  
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
         </mat-form-field>
     </form>
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
-    <button mat-button type="submit" [mat-dialog-close]="true" cdkFocusInitial>Submit</button>
+<mat-dialog-actions align="end" class="matdialog-actionbar">
+    <button mat-button type="submit" (click)="submitform(Form)" [mat-dialog-close]="true" cdkFocusInitial [disabled]="title.invalid || author.invalid || date1.invalid || content.invalid">Submit</button>
     <button mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

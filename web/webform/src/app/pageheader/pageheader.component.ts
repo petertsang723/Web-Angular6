@@ -19,8 +19,8 @@ export class PageheaderComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SubmitformpageComponent,{
-      height: '400px',
-      width: '600px'
+      height: '100%',
+      width: '60%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
