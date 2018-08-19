@@ -27,7 +27,7 @@ export class DataService {
   getForms(){
     return this.http.get('http://localhost:3000/forms').pipe(
       retry(3), // retry a failed request up to 3 times
-    );;
+    );
   }
   patchForms(id: String,form: Object) {
     return this.http.patch('http://localhost:3000/forms/'+id,form,httpOptions).pipe(

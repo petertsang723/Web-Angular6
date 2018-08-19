@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
-import { Form } from '../form';
+
+export type EditorType = 'card' | 'list';
 
 @Component({
   selector: 'app-formpage',
@@ -10,31 +11,27 @@ import { Form } from '../form';
 })
 export class FormpageComponent implements OnInit {
   
-  forms$: Object;
-  error$: Object;
-  resp$: Object;
-  constructor(private data: DataService) { }
+  type: EditorType = 'card';
+
+  constructor() { }
 
   ngOnInit() {
-    this.data.getForms().subscribe(
-      data => this.forms$ = data,
-      error => this.error$ = error
-    )
+
   }
 
-  onPatch(form: Object)
-  {
-    this.data.patchForms(form['_id'],form).subscribe(
-      resp => this.resp$ = resp,
-      error => this.error$ = error,
-      () => console.log(this.resp$)
-    );
+  get showCardView() {
+    return this.type === 'card';
   }
-  
-  onKey(event: any,form: Object,key :String)
-  {
-    form[key.toString()] = event.target.value;
+
+  get showListView() {
+    return this.type === 'list';
   }
+
+  toggleView(type: EditorType) {
+    this.type = type;
+  }
+
+
 }
 
 
@@ -45,4 +42,14 @@ export class FormpageComponent implements OnInit {
       });
       console.log(this.arrtemp);
       this.arrtemp = [];
+
+  onPatch(form: Object)
+  {
+    this.data.patchForms(form['_id'],form).subscribe(
+      resp => this.resp$ = resp,
+      error => this.error$ = error,
+      () => console.log(this.resp$)
+    );
+  }
+
     }*/

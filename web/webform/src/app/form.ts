@@ -1,4 +1,4 @@
-export class Form {
+export interface Form {
     title: String;
     date1: String;
     date2: String;

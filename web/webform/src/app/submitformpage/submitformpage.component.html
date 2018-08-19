@@ -13,7 +13,7 @@
         </mat-form-field>
         <mat-form-field>
             <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1" placeholder="Create Date" #date1="ngModel"
-            class="form-control" name="date1" [(ngModel)] = "form$.date1" (ngModelChange) = "form$.date1=$event" required >
+            class="form-control" name="date1" [(ngModel)] = "form$.date1" required>
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
@@ -23,10 +23,7 @@
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
-        <mat-form-field>
-            <textarea matInput placeholder="Content" [(ngModel)]="form$.content" #content="ngModel"
-            class="form-control" name="content" [(ngModel)] = "form$.content"></textarea>
-        </mat-form-field>
+        <app-tinymce [elementId]="'content'" (onEditorContentChange)="onKey($event)" [content]="form$.content"></app-tinymce>
         <mat-form-field>
             <input matInput [matDatepicker]="picker3" placeholder="Modified Date" 
             class="form-control" name="posttime" [(ngModel)] = "form$.posttime" disabled>  
@@ -37,6 +34,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end" class="matdialog-actionbar">
-    <button mat-button type="submit" (click)="submitform(Form)" [mat-dialog-close]="true" cdkFocusInitial [disabled]="title.invalid || author.invalid || date1.invalid || content.invalid">Submit</button>
+    <button mat-button type="submit" (click)="submitform(Form)" [mat-dialog-close]="true" cdkFocusInitial [disabled]="title.invalid || author.invalid || date1.invalid">Submit</button>
     <button mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

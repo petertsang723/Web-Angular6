@@ -47,6 +47,9 @@ import {
   MatTreeModule,
 } from '@angular/material';
 import { FormdetailpageComponent } from './formdetailpage/formdetailpage.component';
+import { FormpagelistviewComponent } from './formpagelistview/formpagelistview.component';
+import { FormpagecardviewComponent } from './formpagecardview/formpagecardview.component';
+import { TinymceComponent } from './tinymce/tinymce.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { FormdetailpageComponent } from './formdetailpage/formdetailpage.compone
     FormpageComponent,
     SubmitformpageComponent,
     PageheaderComponent,
-    FormdetailpageComponent
+    FormdetailpageComponent,
+    FormpagelistviewComponent,
+    FormpagecardviewComponent,
+    TinymceComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +106,7 @@ import { FormdetailpageComponent } from './formdetailpage/formdetailpage.compone
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [SubmitformpageComponent],
-  entryComponents: [SubmitformpageComponent]
+  exports: [SubmitformpageComponent,FormdetailpageComponent],
+  entryComponents: [SubmitformpageComponent,FormdetailpageComponent]
 })
 export class AppModule { }

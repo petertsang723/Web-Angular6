@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, HostListener }
 import { Form } from '../form';
 import {FormControl} from '@angular/forms';
 import { DataService } from '../data.service';
-
+import { TinymceComponent } from '../tinymce/tinymce.component';
 
 @Component({
   selector: 'app-submitformpage',
@@ -41,5 +41,11 @@ export class SubmitformpageComponent implements OnInit,AfterViewInit {
   test(form: any)
   {
     console.log(form);
+  }
+
+  onKey(event: any)
+  {
+    this.form$.content = event;
+    console.log(this.form$);
   }
 }
