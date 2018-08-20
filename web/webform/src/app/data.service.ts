@@ -8,7 +8,8 @@ const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
     'Authorization': 'Origin',
-    
+    'Access-Control-Allow-Origin' : 'localhost:4200',
+    'Access-Control-Allow-Headers': 'Origin'
   })
 };
 

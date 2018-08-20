@@ -3,7 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/forms');
+mongoose.connect('mongodb://localhost:27017/forms', { useNewUrlParser: true });
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
@@ -14,13 +14,12 @@ const productRoutes = require('./api/routes/products');
 const formsRoutes = require('./api/routes/forms');
 
 app.use((req, res, next) => {
-    console.log(res.header);
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization,access-control-allow-origin,access-control-allow-headers");
     /*res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, PATCH,OPTIONS");
     next();*/
     if(req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods','PUT, POST, PATCH, DELETE, GET');
+        res.header('Access-Control-Allow-Methods','GET, POST, DELETE, PUT, PATCH, OPTIONS');
         return res.status(200).json({});
     }
     next();
