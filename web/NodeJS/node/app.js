@@ -6,8 +6,8 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/forms', { useNewUrlParser: true });
 
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
-app.use(bodyParser.json());                                     // parse application/json
+app.use(bodyParser.urlencoded({'extended':'true',limit: '50mb', parameterLimit:50000}));            // parse application/x-www-form-urlencoded
+app.use(bodyParser.json({limit: '50mb'}));                                     // parse application/json
 
 
 const productRoutes = require('./api/routes/products');
