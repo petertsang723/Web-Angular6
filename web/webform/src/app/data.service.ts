@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
     'Authorization': 'Origin',
     'Access-Control-Allow-Origin' : 'localhost:4200',
     'Access-Control-Allow-Headers': 'Origin'
@@ -22,6 +22,7 @@ const httpOptions = {
 export class DataService {
 
   data$ : Object;
+  formdata: FormData;
 
   constructor(private http: HttpClient) { }
 
@@ -36,6 +37,8 @@ export class DataService {
     )
   }
   postForms(form: Object) {
+    
+    //console.log(form);
     return this.http.post('http://localhost:3000/forms',form,httpOptions).pipe(
       retry(3), // retry a failed request up to 3 times
     );

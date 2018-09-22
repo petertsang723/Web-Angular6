@@ -1,3 +1,5 @@
+import {Attachment} from './attachment';
+
 export interface Form {
     title: String;
     date1: String;
@@ -6,4 +8,5 @@ export interface Form {
     content: String;
     posttime: String;
     iconurl: String;
+    attachments: Attachment[];
 }

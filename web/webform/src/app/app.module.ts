@@ -51,6 +51,8 @@ import { FormpagelistviewComponent } from './formpagelistview/formpagelistview.c
 import { FormpagecardviewComponent } from './formpagecardview/formpagecardview.component';
 import { TinymceComponent } from './tinymce/tinymce.component';
 
+import { FileUploadModule } from "ng2-file-upload";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,7 @@ import { TinymceComponent } from './tinymce/tinymce.component';
     FormdetailpageComponent,
     FormpagelistviewComponent,
     FormpagecardviewComponent,
-    TinymceComponent
+    TinymceComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,6 +105,7 @@ import { TinymceComponent } from './tinymce/tinymce.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent],

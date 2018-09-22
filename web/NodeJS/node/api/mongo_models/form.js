@@ -8,6 +8,7 @@ var schema = new mongoose.Schema({
     author: String,
     content: String,
     posttime: { type : Date, default: Date.now },
-    iconurl: String },{versionKey: false});
+    iconurl: String,
+    attachments: Array },{versionKey: false});
 
 module.exports = mongoose.model('Forms', schema);
